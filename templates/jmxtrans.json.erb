@@ -77,7 +77,7 @@ valid_ganglia_settings = ['slope', 'units', 'tmax', 'dmax', 'sendMetadata']
 <%     end -%>
 <%     if @statsd -%>
 <%       (statsd_host, statsd_port) = @statsd.split(':') -%>
-          <% if @outfile || @ganglia -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.StatsDWriter"
+          <% if @outfile || @ganglia || @graphite -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.StatsDWriter"
             , "settings":
               { "host": "<%= statsd_host %>"
               , "port": <%= statsd_port %>
@@ -92,7 +92,7 @@ valid_ganglia_settings = ['slope', 'units', 'tmax', 'dmax', 'sendMetadata']
 <%     end -%>
 <%     if @opentsdb -%>
 <%       (opentsdb_host, opentsdb_port) = @opentsdb.split(':') -%>
-          <% if @outfile || @ganglia -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.OPENTSDBWriter"
+          <% if @outfile || @ganglia || @graphite || @statsd -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.OPENTSDBWriter"
             , "settings":
               { "host": "<%= opentsdb_host %>"
               , "port": <%= opentsdb_port %>
