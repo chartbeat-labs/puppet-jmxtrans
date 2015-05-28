@@ -92,7 +92,7 @@ valid_ganglia_settings = ['slope', 'units', 'tmax', 'dmax', 'sendMetadata']
 <%     end -%>
 <%     if @opentsdb -%>
 <%       (opentsdb_host, opentsdb_port) = @opentsdb.split(':') -%>
-          <% if @outfile || @ganglia || @graphite || @statsd -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.OPENTSDBWriter"
+          <% if @outfile || @ganglia || @graphite || @statsd -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.OpenTSDBWriter"
             , "settings":
               { "host": "<%= opentsdb_host %>"
               , "port": <%= opentsdb_port %>
