@@ -90,6 +90,21 @@ valid_ganglia_settings = ['slope', 'units', 'tmax', 'dmax', 'sendMetadata']
               }
             }
 <%     end -%>
+<%     if @opentsdb -%>
+<%       (opentsdb_host, opentsdb_port) = @opentsdb.split(':') -%>
+          <% if @outfile || @ganglia -%>, <% else -%>  <% end -%>{ "@class" : "com.googlecode.jmxtrans.model.output.OPENTSDBWriter"
+            , "settings":
+              { "host": "<%= opentsdb_host %>"
+              , "port": <%= opentsdb_port %>
+<%       if object.has_key? 'typeNames' -%>
+              , "typeNames": <%= object['typeNames'].inspect %>
+<%       end -%>
+<%       if @OPENTSDB_root_prefix -%>
+              , "rootPrefix": "<%= @OPENTSDB_root_prefix %>"
+<%       end -%>
+              }
+            }
+<%     end -%>
           ]
         }
 <%   end # object['attrs'].keys.sort.each_with_index -%>
