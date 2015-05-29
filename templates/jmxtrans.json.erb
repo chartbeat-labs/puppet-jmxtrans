@@ -99,8 +99,11 @@ valid_ganglia_settings = ['slope', 'units', 'tmax', 'dmax', 'sendMetadata']
 <%       if object.has_key? 'typeNames' -%>
               , "typeNames": <%= object['typeNames'].inspect %>
 <%       end -%>
-<%       if @OPENTSDB_root_prefix -%>
+<%       if @opentsdb_root_prefix -%>
               , "rootPrefix": "<%= @OPENTSDB_root_prefix %>"
+<%       end -%>
+<%       if @opentsdb_tags -%>
+              , "tags": <%= @opentsdb_tags %>
 <%       end -%>
               }
             }

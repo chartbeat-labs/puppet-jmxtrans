@@ -49,6 +49,7 @@ define jmxtrans::metrics(
     $statsd_root_prefix   = undef,
     $opentsdb             = undef,
     $opentsdb_root_prefix = undef,
+    $opentsdb_tags        = undef,
     $outfile              = undef,
     $json_dir             = '/etc/jmxtrans',
 )
