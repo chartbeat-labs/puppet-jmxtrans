@@ -13,7 +13,7 @@ class jmxtrans(
 )
 {
     package { 'jmxtrans':
-        ensure  => 'installed',
+        ensure  => '250',
     }
 
     file { '/etc/default/jmxtrans':
